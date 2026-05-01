@@ -1,4 +1,4 @@
-import { useCrypto } from "../context/CryptoContext";
+import { useCrypto } from "../context/useCrypto";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip,
   ResponsiveContainer, CartesianGrid, Cell

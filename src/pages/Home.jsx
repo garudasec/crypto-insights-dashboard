@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useCrypto } from "../context/CryptoContext";
 import CoinCard from "../components/CoinCard";
 
 const TOP_COINS = [
@@ -65,33 +64,34 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState("");
   const debounceTimer = useRef(null);
-  const { buyCoin } = useCrypto();
 
-  const fetchCoins = async () => {
-    try {
-      const promises = TOP_COINS.map((coin) =>
-        axios.get(`/binance/api/v3/ticker/24hr?symbol=${coin.symbol}`)
-      );
-      const results = await Promise.all(promises);
-      const formatted = results.map((res, index) => ({
-        id: TOP_COINS[index].id,
-        name: TOP_COINS[index].name,
-        symbol: TOP_COINS[index].abbr,
-        binanceSymbol: TOP_COINS[index].symbol,
-        image: `https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons/128/color/${TOP_COINS[index].abbr.toLowerCase()}.png`,
-        current_price: parseFloat(res.data.lastPrice),
-        price_change_percentage_24h: parseFloat(res.data.priceChangePercent),
-        market_cap: parseFloat(res.data.quoteVolume),
-      }));
-      setCoins(formatted);
-      setLoading(false);
-    } catch (err) {
-      console.error("API Error:", err.message);
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    const fetchCoins = async () => {
+      try {
+        const promises = TOP_COINS.map((coin) =>
+          axios.get(`/binance/api/v3/ticker/24hr?symbol=${coin.symbol}`)
+        );
+        const results = await Promise.all(promises);
+        const formatted = results.map((res, index) => ({
+          id: TOP_COINS[index].id,
+          name: TOP_COINS[index].name,
+          symbol: TOP_COINS[index].abbr,
+          binanceSymbol: TOP_COINS[index].symbol,
+          image: `https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons/128/color/${TOP_COINS[index].abbr.toLowerCase()}.png`,
+          current_price: parseFloat(res.data.lastPrice),
+          price_change_percentage_24h: parseFloat(res.data.priceChangePercent),
+          market_cap: parseFloat(res.data.quoteVolume),
+        }));
+        setCoins(formatted);
+        setLoading(false);
+      } catch (err) {
+        console.error("API Error:", err.message);
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => { fetchCoins(); }, []);
+    void fetchCoins();
+  }, []);
 
   const handleSearch = (e) => {
     const value = e.target.value;

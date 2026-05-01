@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react";
-
-const CryptoContext = createContext();
+import { useState, useEffect } from "react";
+import { CryptoContext } from "./CryptoContextValue";
 
 export function CryptoProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
@@ -133,8 +132,4 @@ export function CryptoProvider({ children }) {
       {children}
     </CryptoContext.Provider>
   );
-}
-
-export function useCrypto() {
-  return useContext(CryptoContext);
 }

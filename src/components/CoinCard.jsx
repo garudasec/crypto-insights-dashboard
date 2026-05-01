@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCrypto } from "../context/CryptoContext";
+import { useCrypto } from "../context/useCrypto";
 
 function CoinCard({ coin, index }) {
   const navigate = useNavigate();

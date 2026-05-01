@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCrypto } from "../context/CryptoContext";
+import { useCrypto } from "../context/useCrypto";
 
 function Transactions() {
   const { transactions, setTransactions } = useCrypto();
