@@ -108,14 +108,12 @@ function Home() {
     setCurrentPage(1);
   };
 
-  // Filter
   const filteredCoins = coins.filter(
     (coin) =>
       coin.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
       coin.symbol.toLowerCase().includes(debouncedSearch.toLowerCase())
   );
 
-  // Sort
   const sortedCoins = [...filteredCoins].sort((a, b) => {
     switch (sortOption) {
       case "price_desc": return b.current_price - a.current_price;
@@ -127,7 +125,6 @@ function Home() {
     }
   });
 
-  // Pagination
   const totalPages = Math.ceil(sortedCoins.length / COINS_PER_PAGE);
   const paginatedCoins = sortedCoins.slice(
     (currentPage - 1) * COINS_PER_PAGE,
@@ -170,7 +167,6 @@ function Home() {
         Click on any coin to view details & trade
       </p>
 
-      {/* Search + Sort */}
       <div className="flex items-center gap-3 mb-6">
         <input
           type="text"
@@ -196,7 +192,6 @@ function Home() {
         </select>
       </div>
 
-      {/* Coins Table */}
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow overflow-hidden">
         <div className="grid grid-cols-5 px-6 py-3 bg-gray-100 dark:bg-gray-700
         text-gray-500 dark:text-gray-300 text-sm font-semibold">
@@ -216,7 +211,6 @@ function Home() {
         ))}
       </div>
 
-      {/* Smart Pagination */}
       <div className="flex justify-center items-center gap-2 mt-6">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

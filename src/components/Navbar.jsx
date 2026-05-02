@@ -9,7 +9,6 @@ function Navbar() {
     <nav className="bg-white dark:bg-gray-800 shadow-md px-6 py-4 flex 
     justify-between items-center sticky top-0 z-50">
 
-      {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <FaCoins className="text-yellow-500 text-2xl" />
         <span className="text-xl font-bold text-gray-800 dark:text-white">
@@ -17,7 +16,6 @@ function Navbar() {
         </span>
       </Link>
 
-      {/* Nav Links */}
       <div className="flex items-center gap-6">
         <NavLink
           to="/"
@@ -51,7 +49,6 @@ function Navbar() {
         </NavLink>
       </div>
 
-      {/* Balance + Dark Mode */}
       <div className="flex items-center gap-4">
         <span className="text-green-500 font-bold text-sm">
           💰 ${balance.toFixed(2)}

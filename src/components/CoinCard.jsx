@@ -25,7 +25,6 @@ function CoinCard({ coin, index }) {
       dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-700 
       cursor-pointer transition-all items-center"
     >
-      {/* Toast Notification */}
       {toast && (
         <div className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 
         rounded-xl shadow-lg text-white font-semibold text-sm 
@@ -35,7 +34,6 @@ function CoinCard({ coin, index }) {
         </div>
       )}
 
-      {/* Coin Name */}
       <div className="flex items-center gap-3">
         <span className="text-gray-400 text-sm w-5">{index + 1}</span>
         <img
@@ -55,7 +53,6 @@ function CoinCard({ coin, index }) {
         </div>
       </div>
 
-      {/* Price */}
       <p className="text-right font-semibold text-gray-800 dark:text-white">
         ${coin.current_price.toLocaleString(undefined, {
           minimumFractionDigits: 2,
@@ -63,7 +60,6 @@ function CoinCard({ coin, index }) {
         })}
       </p>
 
-      {/* 24h Change */}
       <p className={`text-right font-semibold ${
         coin.price_change_percentage_24h >= 0
           ? "text-green-500" : "text-red-500"}`}>
@@ -71,12 +67,10 @@ function CoinCard({ coin, index }) {
         {Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
       </p>
 
-      {/* Volume */}
       <p className="text-right text-gray-500 dark:text-gray-400 text-sm">
         ${(coin.market_cap / 1e9).toFixed(2)}B
       </p>
 
-      {/* Buy Button */}
       <div className="text-right">
         <button
           onClick={handleQuickBuy}

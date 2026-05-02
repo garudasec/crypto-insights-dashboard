@@ -20,7 +20,7 @@ function Transactions() {
     .reduce((sum, t) => sum + t.total, 0);
 
   const handleClear = () => {
-    if (window.confirm("Saari transaction history clear karein?")) {
+    if (window.confirm("Clear all transaction history?")) {
       setTransactions([]);
     }
   };
@@ -36,7 +36,6 @@ function Transactions() {
   return (
     <div className="p-6 max-w-6xl mx-auto">
 
-      {/* Header */}
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
           📜 Transaction History
@@ -52,10 +51,9 @@ function Transactions() {
         )}
       </div>
       <p className="text-gray-500 dark:text-gray-400 mb-6">
-        Saari buy & sell trades ka record
+        All trade transactions
       </p>
 
-      {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
           <p className="text-gray-400 text-sm">Total Trades</p>
@@ -81,7 +79,6 @@ function Transactions() {
         </div>
       </div>
 
-      {/* Filter Buttons */}
       <div className="flex gap-2 mb-4">
         {[
           { v: "all", l: "All" },
@@ -102,7 +99,6 @@ function Transactions() {
         ))}
       </div>
 
-      {/* Table */}
       {filtered.length === 0 ? (
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 shadow text-center">
           <p className="text-4xl mb-4">📭</p>
@@ -123,7 +119,6 @@ function Transactions() {
         </div>
       ) : (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow overflow-hidden">
-          {/* Table Header */}
           <div className="grid grid-cols-6 px-6 py-3 bg-gray-100 dark:bg-gray-700 
           text-gray-500 dark:text-gray-300 text-sm font-semibold">
             <span>Type</span>
@@ -134,7 +129,7 @@ function Transactions() {
             <span className="text-right">Date</span>
           </div>
 
-          {/* Table Rows */}
+
           <div className="max-h-96 overflow-y-auto">
             {filtered.map((t) => (
               <div
@@ -142,14 +137,12 @@ function Transactions() {
                 className="grid grid-cols-6 px-6 py-4 border-b border-gray-100 
                 dark:border-gray-700 items-center text-sm"
               >
-                {/* Type */}
                 <span className={`font-semibold ${
                   t.type === "buy" ? "text-green-500" : "text-red-500"
                 }`}>
                   {t.type === "buy" ? "▲ BUY" : "▼ SELL"}
                 </span>
 
-                {/* Coin */}
                 <div className="flex items-center gap-2">
                   <img
                     src={t.image}
@@ -168,26 +161,22 @@ function Transactions() {
                   </div>
                 </div>
 
-                {/* Quantity */}
                 <span className="text-right text-gray-800 dark:text-white">
                   {t.quantity}
                 </span>
 
-                {/* Price */}
                 <span className="text-right text-gray-800 dark:text-white">
                   ${t.price.toLocaleString(undefined, {
                     minimumFractionDigits: 2, maximumFractionDigits: 2
                   })}
                 </span>
 
-                {/* Total */}
                 <span className="text-right font-semibold text-gray-800 dark:text-white">
                   ${t.total.toLocaleString(undefined, {
                     minimumFractionDigits: 2, maximumFractionDigits: 2
                   })}
                 </span>
 
-                {/* Date */}
                 <span className="text-right text-gray-400 text-xs">
                   {formatDate(t.date)}
                 </span>

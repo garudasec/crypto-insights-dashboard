@@ -63,7 +63,6 @@ export function CryptoProvider({ children }) {
       ];
     });
 
-    // Transaction record
     setTransactions((prev) => [
       {
         id: Date.now(),
@@ -100,7 +99,6 @@ export function CryptoProvider({ children }) {
         .filter((item) => item.quantity > 0)
     );
 
-    // Transaction record
     setTransactions((prev) => [
       {
         id: Date.now(),

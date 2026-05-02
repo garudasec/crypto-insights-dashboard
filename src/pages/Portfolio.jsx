@@ -51,7 +51,6 @@ function Portfolio() {
         Track your virtual investments
       </p>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow">
           <p className="text-gray-400 text-sm mb-1">Available Balance</p>
@@ -77,7 +76,6 @@ function Portfolio() {
       ) : (
         <div className="grid grid-cols-2 gap-6">
 
-          {/* LEFT — Coin Holdings */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow overflow-hidden">
             <div className="px-6 py-4 bg-gray-100 dark:bg-gray-700">
               <h2 className="font-semibold text-gray-700 dark:text-white">
@@ -131,7 +129,6 @@ function Portfolio() {
             </div>
           </div>
 
-          {/* RIGHT — Bar Chart */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow">
             <h2 className="font-semibold text-gray-700 dark:text-white mb-4">
               📊 Portfolio Distribution
